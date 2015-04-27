@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class jugador extends Actor
 {
-    public int milisegundos = 2000;
+    public int milisegundos = 3000;
     public int salto = 10;
     /**
      * Act - do whatever the jugador wants to do. This method is called whenever
@@ -19,12 +19,13 @@ public class jugador extends Actor
         // Add your action code here.
         mover();
     }
-
     protected void mover()
     {
         int i;
-        int band_salto = 0;
+        int x = getX();
+        int y = getY();
         int band_dir = 0;
+        int band_salto = 0;
         if (Greenfoot.isKeyDown("Right"))
         {
             setImage("Samus_Aran1.png");
@@ -39,26 +40,25 @@ public class jugador extends Actor
         }
         if (Greenfoot.isKeyDown("Up"))
         {
-            for(i=0;i<milisegundos;i++)
+            if(band_salto == 0)
             {
-                if(band_dir == 1)
+                for(i=0;i<(milisegundos/2);i++)
                 {
-                    setImage("Samus_Salto_r.png");
+                    if(band_dir == 1)
+                    {
+                        setImage("Samus_Salto_r.png");
+                    }
+                    if(band_dir == 2)
+                    {
+                        setImage("Samus_Salto_i.png");
+                    }
+                    move(-1);
                 }
-                if(band_dir == 2)
-                {
-                    setImage("Samus_Salto_i.png");
-                }
-                if(band_salto == 0)
-                {
-                    setLocation(getX(),getY()-1);
-                    band_salto=milisegundos/2;
-                }
-                else if(band_salto==1000)
-                {
-                    setLocation(getX(),getY()+1);
-                    band_salto=0;
-                }  
+                band_salto = 1;
+            }
+            else if( band_salto == 1)
+            {
+                setLocation(x,y);
             }
         }
     }
