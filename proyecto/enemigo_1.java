@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class enemigo_1 extends Actor
 {
     int rand=Greenfoot.getRandomNumber(400);
+    int dir = 1;
     /**
      * Act - do whatever the enemigo_1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -28,15 +29,15 @@ public class enemigo_1 extends Actor
         int accion=Greenfoot.getRandomNumber(5);
         if(accion==1)
         {
-            muevete();
+            dispara();
         }
         if(accion==2)
         {
-            muevete();
+            dispara();
         }
         if(accion==3)
         {
-            muevete();
+            dispara();
         }
         if(accion==4)
         {
@@ -50,22 +51,31 @@ public class enemigo_1 extends Actor
 
     protected void muevete()
     {
-        int band_dir = Greenfoot.getRandomNumber(4);
+        int band_dir = Greenfoot.getRandomNumber(40);
         switch(band_dir)
         {
             case 1:
-            setLocation(getX()+1,getY());
+            setLocation(getX()+20,getY());
+            dir = 1;
             break;
             case 2:
-            setLocation(getX()-1,getY());
+            setLocation(getX()-20,getY());
+            dir = 2;
             break;
         }
 
     }
-    /*protected void dispara()
+    protected void dispara()
     {
+        int band_dir = Greenfoot.getRandomNumber(40);
+        switch(band_dir)
+        {
+            case 1:
+            new bala_enem();
+            break;
+        }
     }
-    protected void salta()
+    /*protected void salta()
     {
     }
     protected void usaCarta()

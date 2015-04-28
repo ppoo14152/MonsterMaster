@@ -18,13 +18,15 @@ public class jugador extends Actor
     {
         // Add your action code here.
         mover();
+        dispara();
     }
+
     protected void mover()
     {
         int i;
         int x = getX();
         int y = getY();
-        int band_dir = 0;
+        int band_dir = 1;
         int band_salto = 0;
         if (Greenfoot.isKeyDown("Right"))
         {
@@ -40,26 +42,43 @@ public class jugador extends Actor
         }
         if (Greenfoot.isKeyDown("Up"))
         {
+            if(band_dir == 1)
+            {
+                setImage("Samus_Salto_r.png");
+            }
+            if(band_dir == 2)
+            {
+                setImage("Samus_Salto_i.png");
+            }
             if(band_salto == 0)
             {
-                for(i=0;i<(milisegundos/2);i++)
+                for(i=0;i<milisegundos;i++)
                 {
-                    if(band_dir == 1)
+                    setLocation(getX(),y-1);
+                    if(i==(milisegundos/50))
                     {
-                        setImage("Samus_Salto_r.png");
+                        setLocation(x,getY()+1);
+                        i=milisegundos;
+                        if(band_dir == 1)
+                        {
+                            setImage("Samus_Salto_r.png");
+                        }
+                        if(band_dir == 2)
+                        {
+                            setImage("Samus_Salto_i.png");
+                        }
                     }
-                    if(band_dir == 2)
-                    {
-                        setImage("Samus_Salto_i.png");
-                    }
-                    move(-1);
                 }
-                band_salto = 1;
-            }
-            else if( band_salto == 1)
-            {
-                setLocation(x,y);
             }
         }
+        if(Greenfoot.isKeyDown("F"))
+        {
+            dispara();
+        }
+    }
+    
+    protected void dispara()
+    {
+        
     }
 }
