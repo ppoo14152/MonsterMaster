@@ -14,6 +14,9 @@ public class Boton_Ayuda extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+        if(Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new Ayuda());
+        }
+    }
 }

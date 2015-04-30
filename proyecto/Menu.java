@@ -22,5 +22,6 @@ public class Menu extends World
         addObject(new Boton_Record(), 400, 390);
         addObject(new Boton_Salir(), 400, 490);
         addObject(new Titulo(), 400, 90);
+        //Greenfoot.playSound("WeWerentAngels.mp3");
     }
 }

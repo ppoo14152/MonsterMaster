@@ -18,7 +18,6 @@ public class jugador extends Actor
     {
         // Add your action code here.
         mover();
-        dispara();
     }
 
     protected void mover()
@@ -28,9 +27,22 @@ public class jugador extends Actor
         int y = getY();
         int band_dir = 1;
         int band_salto = 0;
+        int band_mov = 1;
+        int band_disp = 0;
+        int band_p = 0;
+        int band = Greenfoot.getRandomNumber(4000);
         if (Greenfoot.isKeyDown("Right"))
         {
-            setImage("Samus_Aran1.png");
+            switch(band_mov)
+            {
+                case 1:
+                setImage("Samus_MovDer2.png");
+                break;
+                case 2:
+                setImage("Samus_MovDer8.png");
+                band_mov=1;
+                break;
+            }
             setLocation(getX()+1,getY());
             band_dir = 1;
         }
@@ -40,7 +52,7 @@ public class jugador extends Actor
             setLocation(getX()-1,getY());
             band_dir = 2;
         }
-        if (Greenfoot.isKeyDown("Up"))
+        if (Greenfoot.isKeyDown("Space"))
         {
             if(band_dir == 1)
             {
@@ -50,35 +62,27 @@ public class jugador extends Actor
             {
                 setImage("Samus_Salto_i.png");
             }
-            if(band_salto == 0)
+            switch(band)
             {
-                for(i=0;i<milisegundos;i++)
+                case 1:
+                setLocation(getX(),getY()-10);
+                band_salto++;
+                if(band_salto==4000)
                 {
-                    setLocation(getX(),y-1);
-                    if(i==(milisegundos/50))
-                    {
-                        setLocation(x,getY()+1);
-                        i=milisegundos;
-                        if(band_dir == 1)
-                        {
-                            setImage("Samus_Salto_r.png");
-                        }
-                        if(band_dir == 2)
-                        {
-                            setImage("Samus_Salto_i.png");
-                        }
-                    }
+                    setLocation(x,y);
                 }
+                break;
             }
+
         }
         if(Greenfoot.isKeyDown("F"))
         {
-            dispara();
+            getWorld().addObject(new bala_jug(band_dir),x,y);
+            Greenfoot.delay(10);
         }
-    }
-    
-    protected void dispara()
-    {
-        
+        if(Greenfoot.isKeyDown("escape"))
+        {
+            Greenfoot.setWorld(new Menu());
+        }
     }
 }

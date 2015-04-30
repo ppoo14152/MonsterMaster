@@ -14,6 +14,14 @@ public class Boton_Salir extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+        salida();// Add your action code here.
+    }
+    private void salida()
+    {
+        if(Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new Portada());
+            Greenfoot.stop();
+        }
+    }
 }
