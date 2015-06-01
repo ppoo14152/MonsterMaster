@@ -16,6 +16,10 @@ public class Record extends World
     public Record()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(800, 600, 1); 
+        
+        ScoreBoard bp=new ScoreBoard(300,350);
+        addObject(bp,400,300);
+        addObject(new botonSalirMenu(), 400,550);
     }
 }

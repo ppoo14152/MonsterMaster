@@ -8,22 +8,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Select_character extends World
 {
-    //private int raza;
+    private int raza = 0;
     /**
      * Constructor for objects of class Select_character.
      * 
      */
-    public Select_character()
+    public Select_character(int c)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
-        //raza = c;
+        raza = c;
         select();
     }
+
     public void select()
     {
-        addObject(new Pesado(), 150, 350);
-        addObject(new Medio(), 400, 350);
-        addObject(new Ligero(), 650, 350);
+        int op=0;
+        op = raza;
+        addObject(new Pesado(op), 150, 350);
+        addObject(new Medio(op), 400, 350);
+        addObject(new Ligero(op), 650, 350);
     }
+
 }

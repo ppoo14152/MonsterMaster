@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Humanoides extends Actor
 {
+    private int op = 0;
     /**
      * Act - do whatever the Humanos wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -17,7 +18,8 @@ public class Humanoides extends Actor
         // Add your action code here.
         if(Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new Select_character());
+            op = 1;
+            Greenfoot.setWorld(new Select_character(op));
             Greenfoot.playSound("Protoss_Probe.wav");
         }
     }    

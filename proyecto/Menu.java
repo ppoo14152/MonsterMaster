@@ -16,7 +16,8 @@ public class Menu extends World
     public Menu()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 600, 1); 
+        super(800, 600, 1);
+        Greenfoot.playSound("SC2_uiBNetToast.mp3");
         addObject(new Boton_Jugar(), 400, 190);
         addObject(new Boton_Ayuda(), 400, 290);
         addObject(new Boton_Record(), 400, 390);

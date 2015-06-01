@@ -15,5 +15,10 @@ public class Boton_Record extends Actor
     public void act() 
     {
         // Add your action code here.
+        if(Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new Record());
+            Greenfoot.playSound("SC2_uiBNetToast.mp3");
+        }
     }    
 }

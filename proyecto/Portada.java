@@ -17,8 +17,15 @@ public class Portada extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
-        addObject(new Presentacion(), 400, 300);
-        Greenfoot.playSound("WeWerentAngels.mp3");
+        
+        GreenfootSound sound = new GreenfootSound("WeWerentAngels.mp3");
+        //sound.playLoop();
+        
+        addObject(new Presentacion(sound), 400, 300);
         //Imprimir la portada de nombres y esperar al usuario
+    }
+    public void detenM(GreenfootSound m)
+    {
+        m.stop();
     }
 }

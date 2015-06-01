@@ -17,7 +17,7 @@ public class Boton_Jugar extends Actor
         if(Greenfoot.mouseClicked(this))
         {
             Greenfoot.setWorld(new Select_class());
-            Greenfoot.playSound("Protoss_Probe.wav");
+            Greenfoot.playSound("SC2_uiBNetToast.mp3");
         }
     }    
 }

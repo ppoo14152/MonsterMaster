@@ -8,15 +8,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Presentacion extends Actor
 {
+    private GreenfootSound s;
     /**
      * Act - do whatever the Presentacion wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public Presentacion(GreenfootSound m)
+    {
+        s = m;
+    }
     public void act() 
     {
         if(Greenfoot.mouseClicked(this))
         {
             Greenfoot.setWorld(new Menu());
+            Portada p = (Portada) getWorld();
+            p.detenM(s);
         }
     }    
 }

@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class bala_jug extends jugador
 {
-    private int band_dir;
+    private int band_dir = 0;
     public bala_jug(int dir)
     {
         band_dir = dir;
@@ -20,40 +20,49 @@ public class bala_jug extends jugador
      */
     public void act() 
     {
+        setImage("Balajug1.png");
         muevete();// Add your action code here.
+        checaColision();
     }
 
     protected void muevete()
     {
-        int band = Greenfoot.getRandomNumber(4);
+        int band = Greenfoot.getRandomNumber(1);
         int x = getX(), y = getY();
         if(band_dir == 1)
         {
             switch(band)
             {
-                case 1:
+                case 0:
                 //setImage("Balajug1.png");
                 setLocation(x+20,y);
                 break;
-            }
-            if(isAtEdge())
-            {
-                getWorld().removeObject(this);
             }
         }
         if(band_dir == 2)
         {
             switch(band)
             {
-                case 1:
+                case 0:
                 setImage("Balajug1_i.png");
                 setLocation(x-20,y);
                 break;
             }
-            if(isAtEdge())
-            {
-                getWorld().removeObject(this);
-            }
+        }
+
+    }
+
+    private void checaColision()
+    {
+        Actor a = this.getOneIntersectingObject(bala_enem.class);
+        if(a != null )
+        {
+            //getWorld().removeObject(this);
+            this.getWorld().removeObject(a);
+        }
+        if(isAtEdge())
+        {
+            getWorld().removeObject(this);
         }
     }
 }

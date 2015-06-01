@@ -6,52 +6,66 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class bala_enem extends enemigo_1
+public class bala_enem extends enemigo
 {
-    public int band_dir = 0;
+    private int band_dir = 0;
+    public bala_enem(int d)
+    {
+        if(d!=0)
+        {
+            band_dir = d;
+        }
+        else
+        {
+            band_dir = 2;
+        }
+    }
+
     /**
-     * Act - do whatever the bala_enem wants to do. This method is called whenever
+     * Act - do whatever the bala_jug wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public bala_enem(int dir)
-    {
-        band_dir = dir;
-    }
+
     public void act() 
     {
-        mueveteBlEnm();// Add your action code here.
+        mueveBenem();// Add your action code here.
+        checaColision();
     }
-    protected void mueveteBlEnm()
+
+    protected void mueveBenem()
     {
-        int band = Greenfoot.getRandomNumber(4);
+        int band = Greenfoot.getRandomNumber(1);
         int x = getX(), y = getY();
-        if(band_dir == 1)
+        if(band_dir== 1)
         {
-            switch(band)
-            {
-                case 1:
-                //setImage("Balajug.png");
+            switch (band)
+            {   
+                case 0:
                 setLocation(x+20,y);
                 break;
             }
-            if(isAtEdge())
-            {
-                getWorld().removeObject(this);
-            }
         }
-        if(band_dir == 2)
+        if(band_dir==2)
         {
-            switch(band)
-            {
-                case 1:
-                //setImage("Balajug3.png");
+            switch (band)
+            {   
+                case 0:
                 setLocation(x-20,y);
                 break;
             }
-            if(isAtEdge())
-            {
-                getWorld().removeObject(this);
-            }
+        }
+    }
+    private void checaColision()
+    {
+        Actor a = this.getOneIntersectingObject(bala_jug.class);
+        if(a != null )
+        {
+            //getWorld().removeObject(this);
+            this.getWorld().removeObject(a);
+        }
+        if(isAtEdge())
+        {
+            getWorld().removeObject(this);
         }
     }
 }

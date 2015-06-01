@@ -20,6 +20,7 @@ public class Boton_Salir extends Actor
     {
         if(Greenfoot.mouseClicked(this))
         {
+            Greenfoot.playSound("SC2_uiBNetToast.mp3");
             Greenfoot.setWorld(new Portada());
             Greenfoot.stop();
         }
